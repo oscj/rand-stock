@@ -25,5 +25,22 @@ body {
 #results {
     width: 70%;
     margin: 0 auto;
-    min-height: 30vw;
+}
+
+#loading {
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 5rem;
+    height: 5rem;
+}
+
+#footer {
+    text-align: center;
+    font-size: 13px;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
 }

@@ -37,14 +37,33 @@
     <div class='row'>
         <div class='col-md-12'>
             <div class="jumbotron text-center" id='results'>
-
+                <div class='container'>
+                    <div class="row">
+                        <div class="col-lg" style='text-align: left'>
+                            <h5>Ticker Symbol: </h5>
+                            <br>
+                            <h1 id='ticker-symbol'></h1>
+                        </div>
+                        <div class="row">
+                            <div class="spinner-border text-success" role="status" id='loading'>
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                           <div id='graph'></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- JavaScript imports-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <scipt src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></scipt>
-    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+        <!-- JavaScript-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <scipt src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></scipt>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="{{url_for('static', filename='js/main.js')}}"></script>
+        <footer id='footer'>
+            <p>Created by Oscar Jaimes</p>
+        </footer>
 </body>
 
 </html>
