@@ -11,7 +11,7 @@ lxml==4.6.1
 MarkupSafe==1.1.1
 multitasking==0.0.9
 numpy==1.19.4
-pandas==1.1.0
+pandas==1.1.4
 python-dateutil==2.8.1
 pytz==2020.4
 requests==2.25.0
