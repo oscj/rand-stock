@@ -37,28 +37,23 @@
     <div class='row'>
         <div class='col-md-12'>
             <div class="jumbotron text-center" id='results'>
-                <div class='container'>
-                    <div class="row">
-                        <div class="col-lg" style='text-align: left'>
+                <div class='container-fluid'>
+                    <div class="row" id='main-ticker-result'>
+                        <div class="col-md-2" style='text-align: center'>
                             <h5>Ticker Symbol: </h5>
                             <br>
                             <h1 id='ticker-symbol'></h1>
                         </div>
-                        <div class="row">
-                            <div class="spinner-border text-success" role="status" id='loading'>
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                        </div>
-                        <div class="col-lg">
-                           <div class='container-fluid' id='graph'>
-                               <p></p>
-                           </div>
+                    
+                        <div class="col-md-10">
+                            <div class='container-fluid' id='graph' style='width: 100%'></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- JavaScript-->
+        <script type="text/javascript" src='https://www.gstatic.com/charts/loader.js'></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <scipt src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></scipt>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
