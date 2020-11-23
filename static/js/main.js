@@ -63,13 +63,23 @@ function populateResultsSection(tickerSymbol) {
 }
 
 function parseHistoricalData(data) {
-    let table = [['Date', 'Price']];
-    let dates = (Object.keys(data))
-    for (let i = 0; i < dates.length; i++) {
-        let currentDate = dates[i];
-        table.push([currentDate, data[currentDate]['close']])
-    }
+    let table = [];
+    let dates = (Object.keys(data));
 
+
+    let int_dates = dates.map(function(date){ return parseInt(date)});
+    int_dates.sort(function(a,b){
+        return a-b;
+    });
+
+    for (let i = 0; i < dates.length; i++) {
+        let currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + parseInt(int_dates[i]));
+        table.push([currentDate, data[dates[i]]['close']])
+    }
+    table = table.reverse();
+    table.unshift(['Date', 'Price']);
+    
     return table;
 }
 

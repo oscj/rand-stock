@@ -1,5 +1,6 @@
 body {
-    background-color: #ffff
+    background-color: #ffff;
+    overflow-x: hidden
 }
 
 .browser-default {
@@ -33,15 +34,5 @@ body {
     margin-right: auto;
     width: 5rem;
     height: 5rem;
-}
-
-#footer {
-    text-align: center;
-    font-size: 13px;
-    position: fixed;
-    left: 0px;
-    bottom: 0px;
-    height: 30px;
-    width: 100%;
 }
 
