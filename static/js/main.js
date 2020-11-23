@@ -6,4 +6,27 @@
  */
 
 
- console.log("js is working");
+$(document).ready(function () {
+    $("#generate-random").on("click", function () {
+        let market = document.getElementById('market-select').value;
+        if (market == "") {
+            alert('Invalid market choice.\nPlease choose one of the markets listed.')
+        } else {
+            $.ajax({
+                url: `../../${market}`,
+                error: function () {
+                    alert("Error generating ticker symbol");
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                type: 'GET'
+            });
+        }
+    })
+});
+
+
+function populateResultsSection(tickerSymbol) {
+
+}

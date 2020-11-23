@@ -25,23 +25,24 @@
     <div class='row'>
         <div class='col-md-12'>
             <select class="browser-default custom-select" id='market-select'>
-                <option selected>Choose Market</option>
-                <option value="1">NASDAQ</option>
-                <option value="2">AMEX</option>
-                <option value="3">NYSE</option>
+                <option value="" selected>Choose Market</option>
+                <option value="rand-nasdaq">NASDAQ</option>
+                <option value="rand-amex">AMEX</option>
+                <option value="rand-nyse">NYSE</option>
             </select>
-            <button type="button" class="btn btn-success">Get Random Ticker Symbol</button>
+            <button type="button" id="generate-random" class="btn btn-success">Get Random Ticker Symbol</button>
         </div>
     </div>
 
     <div class='row'>
         <div class='col-md-12'>
             <div class="jumbotron text-center" id='results'>
-                
+
             </div>
         </div>
     </div>
     <!-- JavaScript imports-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <scipt src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></scipt>
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
 </body>
