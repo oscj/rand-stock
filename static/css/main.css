@@ -36,3 +36,12 @@ body {
     height: 5rem;
 }
 
+#footer {
+    text-align: center;
+    font-size: 15px;
+    position: fixed;
+    left: 0px;
+    bottom: 10px;
+    height: 30px;
+    width: 100%;
+}

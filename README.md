@@ -1,6 +1,6 @@
-## web-rand-stock
+## wsb-rand-stock
 
-A random stock generator dedicated to the [r/wallstreetbets](https://reddit.com/r/wallstreetbets) community.
+A random stock ticker generator dedicated to the [r/wallstreetbets](https://reddit.com/r/wallstreetbets) community.
 
 ## Overview
 

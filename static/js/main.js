@@ -32,7 +32,12 @@ $(document).ready(function () {
 
 
 function populateResultsSection(tickerSymbol) {
+    document.getElementById('chosen-market').innerHTML = $("#market-select option:selected").text();
     document.getElementById('ticker-symbol').innerHTML = tickerSymbol;
+
+    var a = document.getElementById('robinhood'); //or grab it by tagname etc
+    a.style.display = 'block';
+    a.href = `https://robinhood.com/stocks/${tickerSymbol}`;
     $.ajax({
         url: `../../stock5d?ticker=${tickerSymbol}`,
         error: function () {
@@ -47,6 +52,7 @@ function populateResultsSection(tickerSymbol) {
                 var data = google.visualization.arrayToDataTable(table);
 
                 var options = {
+                    hAxis: {format: 'MM/dd/yyyy'},
                     title: `${tickerSymbol} Stock Price vs Date - 5 Day Trend`,
                     curveType: 'none',
                     backgroundColor: { fill: 'transparent' },
@@ -67,19 +73,20 @@ function parseHistoricalData(data) {
     let dates = (Object.keys(data));
 
 
-    let int_dates = dates.map(function(date){ return parseInt(date)});
-    int_dates.sort(function(a,b){
-        return a-b;
+    let int_dates = dates.map(function (date) { return parseInt(date) });
+    int_dates.sort(function (a, b) {
+        return a - b;
     });
 
     for (let i = 0; i < dates.length; i++) {
         let currentDate = new Date();
         currentDate.setDate(currentDate.getDate() + parseInt(int_dates[i]));
+        table.push([currentDate, data[dates[i]]['open']])
         table.push([currentDate, data[dates[i]]['close']])
     }
     table = table.reverse();
     table.unshift(['Date', 'Price']);
-    
+
     return table;
 }
 
