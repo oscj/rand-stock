@@ -23,7 +23,7 @@ def get_rand_amex():
 @app.route('/stock5d')
 def get_stock_data_5d():
     ticker = (request.args.get('ticker'))
-    return sd.get_5day_history(ticker).to_json()
+    return sd.get_5day_history(ticker)
 
 if __name__ == '__main__':
     app.run()
