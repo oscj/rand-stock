@@ -1,0 +1,29 @@
+body {
+    background-color: #ffff
+}
+
+.browser-default {
+    width: 50%;
+}
+
+.row {
+    text-align: center;
+    padding-top: 10px;
+}
+
+#header {
+    background-image: url("https://i.imgur.com/2pIUj46.jpg");
+    min-height: 200px;
+    min-width: 100vw;
+    background-size: auto;
+}
+
+.col-md-12 {
+    text-align: center;
+}
+
+#results {
+    width: 70%;
+    margin: 0 auto;
+    min-height: 20vw;
+}

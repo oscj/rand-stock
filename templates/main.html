@@ -1,13 +1,49 @@
 <!DOCTYPE html>
+
 <head>
+    <meta charset="utf-8">
     <title>wsb-rand-stock</title>
+    <!-- CSS imports-->
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel="stylesheet"
+        type="text/css">
+    <link href="{{url_for('static', filename='css/main.css')}}" rel="stylesheet" type="text/css">
 </head>
 <html>
-    <body>
-        <p>
-            Hello World. This is a p tag.
-        </p>
 
-        <script src="{{url_for('static', filename='main.js')}}"></script>
-    </body>
+<body>
+
+    <div class="jumbotron" id='header'>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-12'>
+            <h3>Random Ticker Symbol Generator</h3>
+            <h5>Dedicated to the r/wallstreetbets community</h5>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-12'>
+            <select class="browser-default custom-select" id='market-select'>
+                <option selected>Choose Market</option>
+                <option value="1">NASDAQ</option>
+                <option value="2">AMEX</option>
+                <option value="3">NYSE</option>
+            </select>
+            <button type="button" class="btn btn-success">Get Random Ticker Symbol</button>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class="jumbotron text-center" id='results'>
+                
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript imports-->
+    <scipt src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></scipt>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+
 </html>
