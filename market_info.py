@@ -17,13 +17,7 @@ def get_tickers(NYSE=True, NASDAQ=True, AMEX=True):
 
 
 def parse_tickers(ticker_list):
-    '''
-        gets rid of all 'weird' tickers
-    '''
-    for ticker in ticker_list:
-        if '.' in ticker or '|' in ticker or '^' in ticker:
-            ticker_list.remove(ticker)
-    return ticker_list
+    return set([t for t in ticker_list if not( '.' in t or '^' in t)])
 
 
 def get_sector_list():
