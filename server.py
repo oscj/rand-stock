@@ -1,7 +1,5 @@
 import generator
-import stock_data as sd
 import market_info as mi
-import json
 
 from flask import Flask, render_template, request
 app = Flask(__name__)
@@ -26,11 +24,6 @@ def get_rand_nasdaq():
 def get_rand_amex():
     return generator.get_rand_ticker_amex()
 
-
-@app.route('/stock5d')
-def get_stock_data_5d():
-    ticker = (request.args.get('ticker'))
-    return sd.get_5day_history(ticker)
 
 @app.route('/sector-list')
 def get_sector_list():
