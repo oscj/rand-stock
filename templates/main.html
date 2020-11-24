@@ -21,13 +21,23 @@
         </div>
     </div>
 
-    <div class='row'>
-        <div class='col-md-12'>
+    <div class='row' style='padding-top: 40px'>
+        <div class='col'>
             <select class="browser-default custom-select" id='market-select'>
-                <option selected value="rand-nasdaq">NASDAQ</option>
+                <option selected value="NASDAQ">Choose Market</option>
+                <option value="rand-nasdaq">NASDAQ</option>
                 <option value="rand-amex">AMEX</option>
                 <option value="rand-nyse">NYSE</option>
             </select>
+        </div>
+
+        <div class='col'>
+            <select class="browser-default custom-select" id='sector-select'>
+                <option inactive selected value="Technology">Choose Sector</option>
+            </select>
+        </div>
+
+        <div class='col'>
             <button type="button" id="generate-random" class="btn btn-success">Get Random Ticker Symbol</button>
         </div>
     </div>
