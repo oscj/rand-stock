@@ -16,11 +16,6 @@
     <div class="jumbotron" id='header'>
     </div>
 
-    <div class='row'>
-        <div class='col-md-12'>
-            <h4 id='title'>Random Ticker Symbol Generator</h4>
-        </div>
-    </div>
 
     <div class='row'>
         <div class='col'>
@@ -49,18 +44,33 @@
         <div class='col-md-12'>
             <div class="jumbotron text-center" id='results' style='padding: 20px'>
                 <div class='container-fluid' style='padding-top: 0px'>
-                    <div class="row" id='main-ticker-result' style='padding-top: 0px'>
-                        <div class="col">
+                    <div class="row" id='main-ticker-result' style='padding-top: 0px'>.
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2">
                             <h5>Ticker Symbol: </h5>
                             <h2 id='ticker-symbol' style='color: #0645AD'></h2>
-                        </div>
-                        <div class="col">
                             <h5>Exchange: </h5>
                             <h2 id='chosen-market'></h2>
                         </div>
+                        <div class="col-md-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">Open</li>
+                                <li class="list-group-item">High</li>
+                                <li class="list-group-item">Low</li>
+                                <li class="list-group-item">Mkt. Cap</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">Vol</li>
+                                <li class="list-group-item">Avg. Vol</li>
+                                <li class="list-group-item">52w High</li>
+                                <li class="list-group-item">52w Low</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" style='padding-top: 20px'>
                         <div class="col-md-12">
                             <!-- TradingView Widget BEGIN -->
                             <div class="tradingview-widget-container"

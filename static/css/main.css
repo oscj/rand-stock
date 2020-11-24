@@ -9,11 +9,18 @@ body {
 
 .row {
     text-align: center;
-    padding-top: 10px;
+    padding-top: 0px;
 }
 
-.col{
+.col {
     text-align: center;
+}
+
+.list-group-item {
+    padding: 7px;
+    text-align: left;
+    background-color: #E9ECEF;
+    border: 0.1px solid #ddd;
 }
 
 
