@@ -2,8 +2,12 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="{{url_for('static', filename='img/favicon.png')}}"/>
-    <title>RTG</title>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+
+    <link rel="icon" type="image/png" href="{{url_for('static', filename='img/favicon.png')}}" />
+    <title>RandStock</title>
     <!-- CSS imports-->
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel="stylesheet"
         type="text/css">
@@ -36,7 +40,7 @@
 
         <div class='col'>
             <br>
-            <button type="button" id="generate-random" class="btn btn-dark">Get Ticker Symbol</button>
+            <button type="button" id="generate-random" class="btn btn-dark">Get Stock</button>
         </div>
     </div>
     <br><br>

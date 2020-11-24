@@ -37,7 +37,7 @@ function populateResultsSection(tickerSymbol, market) {
         {
             "width": screen.width * 0.9,
             "height": 300,
-            "symbol": tickerSymbol,
+            "symbol": market+":"+tickerSymbol,
             "interval": "D",
             "timezone": "Etc/UTC",
             "theme": "light",
