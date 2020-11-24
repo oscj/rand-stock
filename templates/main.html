@@ -21,9 +21,10 @@
     </div>
 
 
-    <div class='row'>
-        <div class='col'>
-            <h6>Exchange</h6>
+    <div class='row no-gutters'>
+        <div class='col-md-2'></div>
+        <div class='col-md-2'>
+            <h5>Exchange</h5>
             <select class="browser-default custom-select" id='market-select'>
                 <option selected value="rand-nasdaq">NASDAQ</option>
                 <option value="rand-amex">AMEX</option>
@@ -31,45 +32,64 @@
             </select>
         </div>
 
-        <div class='col'>
-            <h6>Sector</h6>
+        <div class='col-md-4'>
+            <h5>Sector</h5>
             <select class="browser-default custom-select" id='sector-select'>
                 <option selected value="Technology">Technology</option>
             </select>
         </div>
 
-        <div class='col'>
+        <div class='col-md-2'>
             <br>
-            <button type="button" id="generate-random" class="btn btn-dark">Get Stock</button>
+            <button type="button" id="generate-random" class="btn btn-dark" style='text-align: center; width: 200px'>Get Random Stock</button>
         </div>
+        <div class='col-md-2'></div>
     </div>
     <br><br>
     <div class='row' style='padding-top: 0px'>
         <div class='col-md-12'>
             <div class="jumbotron text-center" id='results' style='padding: 20px'>
                 <div class='container-fluid' style='padding-top: 0px'>
-                    <div class="row" id='main-ticker-result' style='padding-top: 0px'>.
-                        <div class="col-md-2"></div>
+                    <div class="row no-gutters" id='main-ticker-result' style='padding-top: 0px'>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <h5 class='stat-title'>Open</h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5 class='stat-title'>High</h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5 class='stat-title'>Low</h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5 class='stat-title'>Mkt. Cap</h5>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="col-md-2">
                             <h5>Ticker Symbol: </h5>
                             <h2 id='ticker-symbol' style='color: #0645AD'></h2>
+                        </div>
+                        <div class="col-md-2">
                             <h5>Exchange: </h5>
                             <h2 id='chosen-market'></h2>
                         </div>
                         <div class="col-md-3">
                             <ul class="list-group">
-                                <li class="list-group-item">Open</li>
-                                <li class="list-group-item">High</li>
-                                <li class="list-group-item">Low</li>
-                                <li class="list-group-item">Mkt. Cap</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3">
-                            <ul class="list-group">
-                                <li class="list-group-item">Vol</li>
-                                <li class="list-group-item">Avg. Vol</li>
-                                <li class="list-group-item">52w High</li>
-                                <li class="list-group-item">52w Low</li>
+                                <li class="list-group-item">
+                                    <h5 class='stat-title'>Vol</h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5 class='stat-title'>Avg. Vol</h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5 class='stat-title'>52w High</h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5 class='stat-title'>52w Low</h5>
+                                </li>
                             </ul>
                         </div>
                     </div>

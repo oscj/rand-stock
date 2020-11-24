@@ -16,13 +16,20 @@ body {
     text-align: center;
 }
 
+
+
 .list-group-item {
-    padding: 7px;
+    padding: 0px;
     text-align: left;
     background-color: #E9ECEF;
     border: 0.1px solid #ddd;
 }
 
+
+.stat-title{
+    padding-top: 5px;
+    font-size: 16px;
+}
 
 #header {
     background-image: url('..//img/banner.png');
