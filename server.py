@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-import generator 
-import stock_data as sd
-import market_info as mi
-import json
-=======
 import generator
 import market_info as mi
->>>>>>> 4adac1d7c65c80be94ee4869a67ef2fe10fda716
 
 from flask import Flask, render_template, request
 app = Flask(__name__)
