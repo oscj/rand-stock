@@ -16,19 +16,26 @@ body {
     text-align: center;
 }
 
-
-
 .list-group-item {
     padding: 0px;
-    text-align: left;
     background-color: #E9ECEF;
     border: 0.1px solid #ddd;
+    display: inline-block;;
 }
 
-
-.stat-title{
+.stat-title {
+    padding-left: 5px;
     padding-top: 5px;
     font-size: 16px;
+    float: left;
+}
+
+.stat-number {
+    text-align: right;
+    float: right;
+    padding-top: 5px;
+    padding-right: 5px;
+    font-size: 18px;
 }
 
 #header {
@@ -63,5 +70,5 @@ body {
     bottom: 30px;
     height: 30px;
     width: 100%;
-    padding-top:50px;
+    padding-top: 50px;
 }

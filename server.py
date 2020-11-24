@@ -1,5 +1,6 @@
 import generator
 import market_info as mi
+import stock_data as sd
 
 from flask import Flask, render_template, request
 app = Flask(__name__)
@@ -33,7 +34,11 @@ def get_sector_list():
         sector_dict['sectors'].append(sector)
     return sector_dict
         
-        
+@app.route('/stock-info')
+def get_stock_info():
+    stock = request.args.get('ticker')
+    return sd.get_info(stock)
+
 
 
 if __name__ == '__main__':
