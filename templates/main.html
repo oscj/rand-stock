@@ -17,79 +17,83 @@
 
     <div class='row'>
         <div class='col-md-12'>
-            <h3>Random Ticker Symbol Generator</h3>
+            <h4 id='title'>Random Ticker Symbol Generator</h4>
         </div>
     </div>
 
-    <div class='row' style='padding-top: 40px'>
+    <div class='row'>
         <div class='col'>
+            <h6>Market</h6>
             <select class="browser-default custom-select" id='market-select'>
-                <option selected value="NASDAQ">Choose Market</option>
-                <option value="rand-nasdaq">NASDAQ</option>
+                <option selected value="rand-nasdaq">NASDAQ</option>
                 <option value="rand-amex">AMEX</option>
                 <option value="rand-nyse">NYSE</option>
             </select>
         </div>
 
         <div class='col'>
+            <h6>Sector</h6>
             <select class="browser-default custom-select" id='sector-select'>
-                <option inactive selected value="Technology">Choose Sector</option>
+                <option selected value="Technology">Technology</option>
             </select>
         </div>
 
         <div class='col'>
-            <button type="button" id="generate-random" class="btn btn-success">Get Random Ticker Symbol</button>
+            <br>
+            <button type="button" id="generate-random" class="btn btn-dark">Get Ticker Symbol</button>
         </div>
     </div>
-
-    <div class='row'>
+    <br><br>
+    <div class='row' style='padding-top: 0px'>
         <div class='col-md-12'>
-            <div class="jumbotron text-center" id='results'>
-                <div class='container-fluid'>
-                    <div class="row" id='main-ticker-result'>
-                        <div class="col-md-2" style='text-align: center'>
+            <div class="jumbotron text-center" id='results' style='padding: 20px'>
+                <div class='container-fluid' style='padding-top: 0px'>
+                    <div class="row" id='main-ticker-result' style='padding-top: 0px'>
+                        <div class="col">
                             <h5>Ticker Symbol: </h5>
-                            <br>
-                            <h1 id='ticker-symbol'></h1>
-                            <br>
-                            <h5>Market: </h5>
-                            <br>
-                            <h1 id='chosen-market'></h1>
+                            <h2 id='ticker-symbol' style='color: #0645AD'></h2>
                         </div>
-
-                        <div class="col-md-10">
-                            <div class='container-fluid' id='graph' style='width: 100%'></div>
+                        <div class="col">
+                            <h5>Market: </h5>
+                            <h2 id='chosen-market'></h2>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12" style='text-align: center'>
-                            <a href="#" id='robinhood' style='display: none'>Robinhood</a>
+                    <div class="col-md-10">
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container"
+                            style='text-align:center; margin-left: auto; margin-right: auto'>
+                            <div id="tradingview_6b594"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
                         </div>
+                        <!-- TradingView Widget END -->
                     </div>
                 </div>
             </div>
         </div>
-        <!-- JavaScript-->
-        <script type="text/javascript" src='https://www.gstatic.com/charts/loader.js'></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <scipt src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></scipt>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    </div>
+    <!-- JavaScript-->
+    <script type="text/javascript" src='https://www.gstatic.com/charts/loader.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <scipt src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></scipt>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
 
-        <footer id='footer'>
-            <div class='row'>
-                <div class='col'>
-                    <a style='color: green' href="https://github.com/oscjaimes/wsb-rand-stock">Github Repo</a>
-                </div>
-                <div class='col'>
+    <footer id='footer'>
+        <div class='row'>
+            <div class='col'>
+                <a href="https://github.com/oscjaimes/wsb-rand-stock">Github Repo</a>
+            </div>
+            <div class='col'>
+                <div>
                     <p>Created by oscjaimes</p>
                 </div>
-                <div class='col'>
-                    <a style='color: green' href="mailto:oscjaims@gmail.com">Contact</a>
-                </div>
             </div>
-        </footer>
+            <div class='col'>
+                <p>Graphs from <a href='https://www.tradingview.com/'>Trading View</a></p>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

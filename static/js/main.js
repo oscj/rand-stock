@@ -22,7 +22,7 @@ $(document).ready(function () {
                 success: function (data) {
                     // document.getElementById('loading').style.display = "none";
                     console.log(data);
-                    populateResultsSection(data);
+                    populateResultsSection(data, document.getElementById('market-select').options[document.getElementById('market-select').selectedIndex].text);
                 },
                 type: 'GET'
             });
@@ -31,8 +31,26 @@ $(document).ready(function () {
 });
 
 
-function populateResultsSection(tickerSymbol) {
-    document.getElementById('chosen-market').innerHTML = document.getElementById('market-select').value;
+function populateResultsSection(tickerSymbol, market) {
+
+    new TradingView.widget(
+        {
+            "width": screen.width * 0.9,
+            "height": 300,
+            "symbol": tickerSymbol,
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "light",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": true,
+            "container_id": "tradingview_6b594"
+        }
+    );
+
+    document.getElementById('chosen-market').innerHTML = market;
     document.getElementById('ticker-symbol').innerHTML = tickerSymbol;
 
     var a = document.getElementById('robinhood'); //or grab it by tagname etc
@@ -123,7 +141,7 @@ $(window).on('load', function () {
         success: function (data) {
             // document.getElementById('loading').style.display = "none";
             console.log(data);
-            populateResultsSection(data);
+            populateResultsSection(data, 'NASDAQ');
         },
         type: 'GET'
     });

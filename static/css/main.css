@@ -1,5 +1,5 @@
 body {
-    background-color: #ffff;
+    background-color: #ffffff;
     overflow-x: hidden
 }
 
@@ -12,9 +12,14 @@ body {
     padding-top: 10px;
 }
 
+.col{
+    text-align: center;
+}
+
+
 #header {
-    background-image: url("https://i.imgur.com/2pIUj46.jpg");
-    min-height: 200px;
+    background-image: url('..//img/banner.png');
+    min-height: 100px;
     min-width: 100vw;
     background-size: auto;
 }
@@ -41,7 +46,7 @@ body {
     font-size: 15px;
     position: fixed;
     left: 0px;
-    bottom: 10px;
+    bottom: 30px;
     height: 30px;
     width: 100%;
 }
