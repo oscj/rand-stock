@@ -32,6 +32,7 @@ $(document).ready(function () {
 
 
 function populateResultsSection(tickerSymbol) {
+    document.getElementById('chosen-market').innerHTML = document.getElementById('market-select').value;
     document.getElementById('ticker-symbol').innerHTML = tickerSymbol;
     $.ajax({
         url: `../../stock5d?ticker=${tickerSymbol}`,
@@ -47,6 +48,7 @@ function populateResultsSection(tickerSymbol) {
                 var data = google.visualization.arrayToDataTable(table);
 
                 var options = {
+                    hAxis: { format: 'MM/dd/yyyy' },
                     title: `${tickerSymbol} Stock Price vs Date - 5 Day Trend`,
                     curveType: 'none',
                     backgroundColor: { fill: 'transparent' },
@@ -73,7 +75,31 @@ function parseHistoricalData(data) {
     return table;
 }
 
+
+function populateSectorDropDown() {
+    $.ajax({
+        url: `../../sector-list`,
+        error: function () {
+            console.warn("Error generating ticker symbol");
+        },
+        success: function (data) {
+            //Populate sector dropdown
+            let sectorSelect = document.getElementById('sector-select');
+
+            let sectors = data['sectors'];
+            sectors.forEach(sector => {
+                var option = document.createElement("option");
+                option.text = sector;
+                option.value = sector;
+                sectorSelect.appendChild(option);
+            });
+        },
+        type: 'GET'
+    });
+}
+
 $(window).on('load', function () {
+    populateSectorDropDown();
     $.ajax({
         url: `../../rand-nasdaq`,
         error: function () {
