@@ -22,7 +22,7 @@ $(document).ready(function () {
                 success: function (data) {
                     // document.getElementById('loading').style.display = "none";
                     console.log(data);
-                    populateResultsSection(data);
+                    populateResultsSection(data, document.getElementById('market-select').options[document.getElementById('market-select').selectedIndex].text);
                 },
                 type: 'GET'
             });
@@ -31,15 +31,43 @@ $(document).ready(function () {
 });
 
 
+<<<<<<< HEAD
 function populateResultsSection(tickerSymbol) {
     document.getElementById('chosen-market').innerHTML = document.getElementById('market-select').value;
+=======
+function populateResultsSection(tickerSymbol, market) {
+
+    new TradingView.widget(
+        {
+            "width": screen.width * 0.9,
+            "height": 300,
+            "symbol": tickerSymbol,
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "light",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": true,
+            "container_id": "tradingview_6b594"
+        }
+    );
+
+    document.getElementById('chosen-market').innerHTML = market;
+>>>>>>> 4adac1d7c65c80be94ee4869a67ef2fe10fda716
     document.getElementById('ticker-symbol').innerHTML = tickerSymbol;
+}
+
+
+function populateSectorDropDown() {
     $.ajax({
-        url: `../../stock5d?ticker=${tickerSymbol}`,
+        url: `../../sector-list`,
         error: function () {
-            swal("Error generating ticker symbol");
+            console.warn("Error generating ticker symbol");
         },
         success: function (data) {
+<<<<<<< HEAD
             google.charts.load('current', { 'packages': ['corechart'] });
             google.charts.setOnLoadCallback(drawChart);
             let table = parseHistoricalData(data);
@@ -54,26 +82,24 @@ function populateResultsSection(tickerSymbol) {
                     backgroundColor: { fill: 'transparent' },
                     legend: { position: 'none' }
                 };
+=======
+            //Populate sector dropdown
+            let sectorSelect = document.getElementById('sector-select');
+>>>>>>> 4adac1d7c65c80be94ee4869a67ef2fe10fda716
 
-                var chart = new google.visualization.LineChart(document.getElementById('graph'));
-
-                chart.draw(data, options);
-            }
+            let sectors = data['sectors'];
+            sectors.forEach(sector => {
+                var option = document.createElement("option");
+                option.text = sector;
+                option.value = sector;
+                sectorSelect.appendChild(option);
+            });
         },
         type: 'GET'
     });
 }
 
-function parseHistoricalData(data) {
-    let table = [['Date', 'Price']];
-    let dates = (Object.keys(data))
-    for (let i = 0; i < dates.length; i++) {
-        let currentDate = dates[i];
-        table.push([currentDate, data[currentDate]['close']])
-    }
 
-    return table;
-}
 
 
 function populateSectorDropDown() {
@@ -108,7 +134,7 @@ $(window).on('load', function () {
         success: function (data) {
             // document.getElementById('loading').style.display = "none";
             console.log(data);
-            populateResultsSection(data);
+            populateResultsSection(data, 'NASDAQ');
         },
         type: 'GET'
     });

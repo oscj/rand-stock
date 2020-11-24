@@ -1,5 +1,6 @@
 body {
-    background-color: #ffff
+    background-color: #ffffff;
+    overflow-x: hidden
 }
 
 .browser-default {
@@ -11,9 +12,14 @@ body {
     padding-top: 10px;
 }
 
+.col{
+    text-align: center;
+}
+
+
 #header {
-    background-image: url("https://i.imgur.com/2pIUj46.jpg");
-    min-height: 200px;
+    background-image: url('..//img/banner.png');
+    min-height: 100px;
     min-width: 100vw;
     background-size: auto;
 }
@@ -37,11 +43,10 @@ body {
 
 #footer {
     text-align: center;
-    font-size: 13px;
+    font-size: 15px;
     position: fixed;
     left: 0px;
-    bottom: 0px;
+    bottom: 30px;
     height: 30px;
     width: 100%;
 }
-
