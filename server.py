@@ -33,15 +33,6 @@ def get_sector_list():
         sector_dict['sectors'].append(sector)
     return sector_dict
         
-
-
-@app.route('/sector-list')
-def get_sector_list():
-    sector_list =  mi.get_sector_list()
-    sector_dict = { 'sectors' : []}
-    for sector in sector_list:
-        sector_dict['sectors'].append(sector)
-    return sector_dict
         
 
 

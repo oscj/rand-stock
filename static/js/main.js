@@ -31,10 +31,6 @@ $(document).ready(function () {
 });
 
 
-<<<<<<< HEAD
-function populateResultsSection(tickerSymbol) {
-    document.getElementById('chosen-market').innerHTML = document.getElementById('market-select').value;
-=======
 function populateResultsSection(tickerSymbol, market) {
 
     new TradingView.widget(
@@ -55,7 +51,6 @@ function populateResultsSection(tickerSymbol, market) {
     );
 
     document.getElementById('chosen-market').innerHTML = market;
->>>>>>> 4adac1d7c65c80be94ee4869a67ef2fe10fda716
     document.getElementById('ticker-symbol').innerHTML = tickerSymbol;
 }
 
@@ -67,25 +62,8 @@ function populateSectorDropDown() {
             console.warn("Error generating ticker symbol");
         },
         success: function (data) {
-<<<<<<< HEAD
-            google.charts.load('current', { 'packages': ['corechart'] });
-            google.charts.setOnLoadCallback(drawChart);
-            let table = parseHistoricalData(data);
-            function drawChart() {
-
-                var data = google.visualization.arrayToDataTable(table);
-
-                var options = {
-                    hAxis: { format: 'MM/dd/yyyy' },
-                    title: `${tickerSymbol} Stock Price vs Date - 5 Day Trend`,
-                    curveType: 'none',
-                    backgroundColor: { fill: 'transparent' },
-                    legend: { position: 'none' }
-                };
-=======
             //Populate sector dropdown
             let sectorSelect = document.getElementById('sector-select');
->>>>>>> 4adac1d7c65c80be94ee4869a67ef2fe10fda716
 
             let sectors = data['sectors'];
             sectors.forEach(sector => {
