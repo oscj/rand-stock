@@ -53,9 +53,7 @@ function populateResultsSection(tickerSymbol, market) {
     document.getElementById('chosen-market').innerHTML = market;
     document.getElementById('ticker-symbol').innerHTML = tickerSymbol;
 
-    var a = document.getElementById('robinhood'); //or grab it by tagname etc
-    a.style.display = 'block';
-    a.href = `https://robinhood.com/stocks/${tickerSymbol}`;
+   
     $.ajax({
         url: `../../stock5d?ticker=${tickerSymbol}`,
         error: function () {
