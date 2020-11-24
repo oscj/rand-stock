@@ -58,9 +58,10 @@ body {
 #footer {
     text-align: center;
     font-size: 15px;
-    position: fixed;
+    position: relative;
     left: 0px;
     bottom: 30px;
     height: 30px;
     width: 100%;
+    padding-top:50px;
 }
