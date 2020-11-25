@@ -7,6 +7,7 @@
 import generator
 import market_info as mi
 import stock_data as sd
+import fetch_news as fn
 import flask
 from flask import Flask, render_template, request
 app = Flask(__name__)
@@ -44,6 +45,11 @@ def get_sector_list():
 def get_stock_info():
     stock = request.args.get('ticker')
     return sd.get_info(stock)
+
+@app.route('/stock-news')
+def get_stock_news():
+    stock = request.args.get('ticker')
+    return fn.get_news_by_ticker(stock)
 
 if __name__ == '__main__':
     app.run()
