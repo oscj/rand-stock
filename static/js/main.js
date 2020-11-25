@@ -37,7 +37,7 @@ function populateResultsSection(tickerSymbol, market) {
         {
             "width": screen.width * 0.9,
             "height": 300,
-            "symbol": market+":"+tickerSymbol,
+            "symbol": market + ":" + tickerSymbol,
             "interval": "D",
             "timezone": "Etc/UTC",
             "theme": "light",
@@ -52,6 +52,33 @@ function populateResultsSection(tickerSymbol, market) {
 
     document.getElementById('chosen-market').innerHTML = market;
     document.getElementById('ticker-symbol').innerHTML = tickerSymbol;
+    populateStatisticsSection(tickerSymbol)
+}
+
+function populateStatisticsSection(tickerSymbol) {
+
+    $.ajax({
+        url: `../../stock-info?ticker=${tickerSymbol}`,
+        error: function () {
+            swal("Error getting stock statistics");
+        },
+        success: function (data) {
+            console.log(data);
+            document.getElementById('open').innerHTML = (data['open']) || '-';
+            document.getElementById('high').innerHTML = (data['high']) || '-';
+            document.getElementById('low').innerHTML = (data['low']) || '-';
+            document.getElementById('cap').innerHTML = numberWithCommas(data['marketCap']) || '-';
+            document.getElementById('vol').innerHTML = numberWithCommas(data['vol']) || '-';
+            document.getElementById('avg-vol').innerHTML = numberWithCommas(data['avgVol']) || '-';
+            document.getElementById('52w-high').innerHTML = (data['52wHigh']) || '-';
+            document.getElementById('52w-low').innerHTML = (data['52wLow']) || '-';
+        },
+        type: 'GET'
+    });
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 
