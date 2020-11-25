@@ -18,5 +18,5 @@ Honestly, I couldn't find a random stock generator that I truly loved. So I deci
 - Tracked in issues
 
 ## Acknowledgment
-Some of the backend python code was greatly inspired by the [get-all-tickers](https://github.com/shilewenuw/get_all_tickers) library made by [Shile Wen](https://github.com/shilewenuw)
+Some of the backend python code was greatly inspired by the [get-all-tickers](https://github.com/shilewenuw/get_all_tickers) library made by [Shile Wen](https://github.com/shilewenuw). Because of the [NASDAQ anti scrapping mechanism](https://github.com/shilewenuw/get_all_tickers/issues/4), I wasn't able to use this library on the server side.
 
