@@ -7,6 +7,14 @@ Have you ever wanted to start investing but couldn't decide what stock to pour y
 
 No more TSLA calls. No more PLTR calls. Put all your money in a random stock and [perform better than the S&P500](https://www.youtube.com/watch?v=NfSGm9DDQ3o&ab_channel=Node14)
 
+## How it works
+- Uses [yfinance](https://pypi.org/project/yfinance/) and market data CSV files to fetch information on a random stock from a specific market & sector
+- Graphs are generated with [Trading View](https://www.tradingview.com/)
+
+
+## TODO
+- Tracked in issues
+
 ## Inspirations
 This project was inspired by the [Random Stock Picker](https://raybb.github.io/random-stock-picker/) website made by [RayBB](https://github.com/RayBB/random-stock-picker) and the [get-all-tickers](https://github.com/shilewenuw/get_all_tickers) library made by [Shile Wen](https://github.com/shilewenuw)
 
