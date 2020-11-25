@@ -1,3 +1,6 @@
+'''
+    Generate random stocks here
+'''
 import market_info as mi
 from random import randint
 

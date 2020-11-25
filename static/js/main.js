@@ -60,10 +60,16 @@ function populateStatisticsSection(tickerSymbol) {
     $.ajax({
         url: `../../stock-info?ticker=${tickerSymbol}`,
         error: function () {
-            swal("Error getting stock statistics");
+            document.getElementById('open').innerHTML = '-';
+            document.getElementById('high').innerHTML = '-';
+            document.getElementById('low').innerHTML = '-';
+            document.getElementById('cap').innerHTML = '-';
+            document.getElementById('vol').innerHTML = '-';
+            document.getElementById('avg-vol').innerHTML = '-';
+            document.getElementById('52w-high').innerHTML = '-';
+            document.getElementById('52w-low').innerHTML = '-';
         },
         success: function (data) {
-            console.log(data);
             document.getElementById('open').innerHTML = (data['open']) || '-';
             document.getElementById('high').innerHTML = (data['high']) || '-';
             document.getElementById('low').innerHTML = (data['low']) || '-';
