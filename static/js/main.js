@@ -9,13 +9,14 @@
 $(document).ready(function () {
     $("#generate-random").on("click", function () {
         let market = document.getElementById('market-select').value;
+        let sector = document.getElementById('sector-select').value;
         if (market == "") {
             swal('Invalid market choice.\nPlease choose one of the markets listed')
         } else {
             //document.getElementById('loading').style.display = "block";
 
             $.ajax({
-                url: `../../${market}`,
+                url: `../../${market}?sector=${sector}`,
                 error: function () {
                     swal("Error generating ticker symbol");
                 },

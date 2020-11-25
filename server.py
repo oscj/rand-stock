@@ -1,3 +1,6 @@
+'''
+    Server side
+'''
 import generator
 import market_info as mi
 import stock_data as sd
@@ -5,28 +8,26 @@ import flask
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-
 @app.route('/')
 def main():
     response = flask.Response()
     response.headers["Clear-Site-Data"] = "cache"
     return render_template('main.html')
 
-
 @app.route('/rand-nyse')
 def get_rand_nyse():
-    return generator.get_rand_ticker_nyse()
-
+    sector = request.args.get("sector", default='Technology')
+    return generator.get_rand_ticker_nyse(sector)
 
 @app.route('/rand-nasdaq')
 def get_rand_nasdaq():
-    return generator.get_rand_ticker_nasdaq()
-
+    sector = request.args.get("sector", default='Technology')
+    return generator.get_rand_ticker_nasdaq(sector)
 
 @app.route('/rand-amex')
 def get_rand_amex():
-    return generator.get_rand_ticker_amex()
-
+    sector = request.args.get("sector", default='Technology')
+    return generator.get_rand_ticker_amex(sector)
 
 @app.route('/sector-list')
 def get_sector_list():
@@ -42,7 +43,5 @@ def get_stock_info():
     return sd.get_info(stock)
 
 
-
 if __name__ == '__main__':
     app.run()
-
