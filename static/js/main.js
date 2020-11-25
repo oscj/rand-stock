@@ -116,8 +116,6 @@ let populateSectorDropDown = () => {
 
 
 let fetchStockNews = (ticker) => {
-    let newsTitle = document.getElementById('newsTitle');
-    newsTitle.innerHTML = `News related to ${ticker}`
     $.ajax({
         url: `../../stock-news?ticker=${ticker}`,
         error: () => {
@@ -129,27 +127,30 @@ let fetchStockNews = (ticker) => {
             let newsDiv = document.getElementById('news-section');
 
             let all_article_html = "";
-
+            let counter = 0;
             data['articles'].forEach(article => {
-
+                let header = "";
+                if (counter == 0) {
+                    header = `News related to <span style='color: #0645AD'>${ticker}</span>`
+                }
                 let article_card = ` 
                 <div class="card">
-                <div class="card-header">
+                <div style='text-align: center; padding: 2px;'class="card-header">
+                    <h5>${header}</h5>
                 </div>
                     <div class="card-body">
                         <h5 class="card-title">${article['title']}</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
-                        <a href="#" class="btn btn-primary">view</a>
+                        <a href="${article['link']}"  target="_blank" class="btn btn-primary">View article on ${article['source']['title']}</a>
                     </div>
                 </div>`;
 
                 all_article_html += article_card;
+                counter++;
             });
 
             newsDiv.innerHTML = all_article_html;
 
-            
+
         },
         type: 'GET'
     });

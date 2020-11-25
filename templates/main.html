@@ -35,7 +35,7 @@
             </select>
         </div>
 
-        <div class='col-md-4'>
+        <div class='col-md-4' style='padding: 5px;'>
             <h5>Sector</h5>
             <select class="browser-default custom-select" id='sector-select'>
             </select>
@@ -54,7 +54,7 @@
         <div class='col'>
             <div class="jumbotron text-center" id='results' style='padding: 20px'>
                 <div class='container-fluid' style='padding-top: 0px'>
-                    <div class="row no-gutters" id='main-ticker-result' style='padding-top: 0px'>
+                    <div class="row no-gutters" id='main-ticker-result' style='padding-top: 0px; padding-bottom: 0px''>
                         <div class="col-md-1"></div>
                         <div class="col-md-3">
                             <ul class="list-group">
@@ -107,24 +107,23 @@
                     </div>
 
                     <div class="row" style='padding-top: 20px'>
-                        <div class="col">
+                        <div class="col-md-8">
                             <!-- TradingView Widget BEGIN -->
                             <div class="tradingview-widget-container"
-                                style='text-align:center; margin-left: auto; margin-right: auto'>
+                                style='text-align:center; margin-left: auto; margin-right: auto; padding-top: 8px;'>
                                 <div id="tradingview_6b594"></div>
                                 <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
                             </div>
                             <!-- TradingView Widget END -->
                         </div>
-                    </div>
 
-                    <div class="row" style='padding-top: 50px' style='width: 50%'>
-                        <div class="col" style='width: 50%'>
+                        <div class="col-md-4">
                             <h5 id='newsTitle'></h5>
                             <div class='news-section' id='news-section'>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
