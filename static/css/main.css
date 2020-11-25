@@ -1,6 +1,6 @@
 body {
     background-color: #ffffff;
-    overflow-x: hidden
+        overflow-x: hidden;
 }
 
 .browser-default {
@@ -20,7 +20,8 @@ body {
     padding: 0px;
     background-color: #E9ECEF;
     border: 0.1px solid #ddd;
-    display: inline-block;;
+    display: inline-block;
+    ;
 }
 
 .stat-title {
@@ -62,13 +63,13 @@ body {
     height: 5rem;
 }
 
+* {
+    overflow-x: hidden;
+}
+
+
 #footer {
     text-align: center;
     font-size: 15px;
-    position: relative;
-    left: 0px;
-    bottom: 30px;
-    height: 30px;
-    width: 100%;
     padding-top: 50px;
 }

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Random Stock Selector">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="random, stock, generator, rand, randstock, selector">
     <meta name="author" content="oscjaimes">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv='cache-control' content='no-cache'>
     <meta http-equiv='expires' content='0'>
     <meta http-equiv='pragma' content='no-cache'>
@@ -49,7 +50,7 @@
     </div>
     <br><br>
     <div class='row' style='padding-top: 0px'>
-        <div class='col-md-12'>
+        <div class='col'>
             <div class="jumbotron text-center" id='results' style='padding: 20px'>
                 <div class='container-fluid' style='padding-top: 0px'>
                     <div class="row no-gutters" id='main-ticker-result' style='padding-top: 0px'>
@@ -105,7 +106,7 @@
                     </div>
 
                     <div class="row" style='padding-top: 20px'>
-                        <div class="col-md-12">
+                        <div class="col">
                             <!-- TradingView Widget BEGIN -->
                             <div class="tradingview-widget-container"
                                 style='text-align:center; margin-left: auto; margin-right: auto'>
@@ -118,30 +119,31 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class='row' id='footer'>
 
-        <!-- JavaScript-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <scipt src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></scipt>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="{{url_for('static', filename='js/main.js')}}"></script>
-
-</body>
-<footer id='footer'>
-    <div class='row'>
         <div class='col'>
-            <a href="https://github.com/oscjaimes/wsb-rand-stock">Github</a>
+            <a href="https://github.com/oscjaimes/rand-stock">Github</a>
         </div>
         <div class='col'>
             <div>
                 <p>Created by oscjaimes</p>
-                <p>Dedicated to the <a href='https://reddit.com/r/wallstreetbets'>wallstreetbets</a> community</p>
+                <p>Dedicated to the <a href='https://reddit.com/r/wallstreetbets'>wallstreetbets</a> community
+                </p>
             </div>
         </div>
         <div class='col'>
             <p>Graphs by <a href='https://www.tradingview.com/'>Trading View</a></p>
         </div>
+
     </div>
-</footer>
+    <!-- JavaScript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <scipt src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></scipt>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+</body>
 
 </html>
