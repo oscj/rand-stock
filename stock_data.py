@@ -1,5 +1,8 @@
 '''
-    Get stock info here
+    Get stock info here based on ticker symbol.
+
+    Oscar Jaimes
+    Nov 24 2020
 '''
 import yfinance as yf
 

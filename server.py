@@ -1,5 +1,8 @@
 '''
-    Server side
+    Server side. Controls routes. Provides access to stock & related data
+
+    Oscar Jaimes
+    Nov 24 2020
 '''
 import generator
 import market_info as mi
@@ -41,7 +44,6 @@ def get_sector_list():
 def get_stock_info():
     stock = request.args.get('ticker')
     return sd.get_info(stock)
-
 
 if __name__ == '__main__':
     app.run()

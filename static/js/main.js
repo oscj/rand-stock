@@ -1,28 +1,25 @@
 /**
  * JS for templates/main.html
  * 
- * Author: Oscar Jaimes
- * Date: Novermer 22, 2020
+ * Oscar Jaimes
+ * Novermer 24  2020
  */
 
-
-$(document).ready(function () {
-    $("#generate-random").on("click", function () {
+$(document).ready(() => {
+    // Get random stock button
+    $("#generate-random").on("click", () => {
         let market = document.getElementById('market-select').value;
         let sector = document.getElementById('sector-select').value;
         if (market == "") {
             swal('Invalid market choice.\nPlease choose one of the markets listed')
         } else {
-            //document.getElementById('loading').style.display = "block";
-
             $.ajax({
                 url: `../../${market}?sector=${sector}`,
-                error: function () {
-                    swal("Error generating ticker symbol");
+                error: () => {
+                    console.warn("Error generating ticker symbol. TSLA will save the day.");
+                    populateResultsSection('TSLA', 'NASDAQ');
                 },
-                success: function (data) {
-                    // document.getElementById('loading').style.display = "none";
-                    console.log(data);
+                success: (data) => {
                     populateResultsSection(data, document.getElementById('market-select').options[document.getElementById('market-select').selectedIndex].text);
                 },
                 type: 'GET'
@@ -31,9 +28,8 @@ $(document).ready(function () {
     })
 });
 
-
-function populateResultsSection(tickerSymbol, market) {
-
+let populateResultsSection = (tickerSymbol, market) => {
+    // Get Trading View stock graph for corresponding ticker
     new TradingView.widget(
         {
             "width": screen.width * 0.9,
@@ -51,16 +47,18 @@ function populateResultsSection(tickerSymbol, market) {
         }
     );
 
+    // Fill in market and ticker fields
     document.getElementById('chosen-market').innerHTML = market;
     document.getElementById('ticker-symbol').innerHTML = tickerSymbol;
+
+    // Populate Stats
     populateStatisticsSection(tickerSymbol)
 }
 
-function populateStatisticsSection(tickerSymbol) {
-
+let populateStatisticsSection = (tickerSymbol) => {
     $.ajax({
         url: `../../stock-info?ticker=${tickerSymbol}`,
-        error: function () {
+        error: () => {
             document.getElementById('open').innerHTML = '-';
             document.getElementById('high').innerHTML = '-';
             document.getElementById('low').innerHTML = '-';
@@ -70,7 +68,7 @@ function populateStatisticsSection(tickerSymbol) {
             document.getElementById('52w-high').innerHTML = '-';
             document.getElementById('52w-low').innerHTML = '-';
         },
-        success: function (data) {
+        success: (data) => {
             document.getElementById('open').innerHTML = (data['open']) || '-';
             document.getElementById('high').innerHTML = (data['high']) || '-';
             document.getElementById('low').innerHTML = (data['low']) || '-';
@@ -84,18 +82,19 @@ function populateStatisticsSection(tickerSymbol) {
     });
 }
 
-function numberWithCommas(x) {
+// Mis function to format numbers. Taken from the bible (https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript)
+let numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-
-function populateSectorDropDown() {
+// Gets all sectors and populates dropdown menu.
+let populateSectorDropDown = () => {
     $.ajax({
         url: `../../sector-list`,
-        error: function () {
-            console.warn("Error generating ticker symbol");
+        error: () => {
+            console.warn("Error generating ticker list");
         },
-        success: function (data) {
+        success: (data) => {
             //Populate sector dropdown
             let sectorSelect = document.getElementById('sector-select');
 
@@ -111,40 +110,14 @@ function populateSectorDropDown() {
     });
 }
 
-
-
-
-function populateSectorDropDown() {
-    $.ajax({
-        url: `../../sector-list`,
-        error: function () {
-            console.warn("Error generating ticker symbol");
-        },
-        success: function (data) {
-            //Populate sector dropdown
-            let sectorSelect = document.getElementById('sector-select');
-
-            let sectors = data['sectors'];
-            sectors.forEach(sector => {
-                var option = document.createElement("option");
-                option.text = sector;
-                option.value = sector;
-                sectorSelect.appendChild(option);
-            });
-        },
-        type: 'GET'
-    });
-}
-
-$(window).on('load', function () {
+$(window).on('load', () => {
     populateSectorDropDown();
     $.ajax({
         url: `../../rand-nasdaq`,
-        error: function () {
+        error: () => {
             swal("Error generating ticker symbol");
         },
-        success: function (data) {
-            // document.getElementById('loading').style.display = "none";
+        success: (data) => {
             console.log(data);
             populateResultsSection(data, 'NASDAQ');
         },

@@ -1,5 +1,8 @@
 '''
-    Generate random stocks here
+    Generate random stocks here. Based on market and sector.
+    
+    Oscar Jaimes
+    Nov 24 2020
 '''
 import market_info as mi
 from random import randint
