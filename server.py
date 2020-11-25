@@ -1,13 +1,15 @@
 import generator
 import market_info as mi
 import stock_data as sd
-
+import flask
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
 @app.route('/')
 def main():
+    response = flask.Response()
+    response.headers["Clear-Site-Data"] = "cache"
     return render_template('main.html')
 
 
