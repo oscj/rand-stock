@@ -36,7 +36,7 @@ function populateResultsSection(tickerSymbol, market) {
     new TradingView.widget(
         {
             "width": screen.width * 0.9,
-            "height": 300,
+            "height": 475,
             "symbol": market + ":" + tickerSymbol,
             "interval": "D",
             "timezone": "Etc/UTC",
