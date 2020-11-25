@@ -1,4 +1,4 @@
-## wsb-rand-stock
+## rand-stock
 
 A random stock selector dedicated to the great community of [r/wallstreetbets](https://reddit.com/r/wallstreetbets)
 
