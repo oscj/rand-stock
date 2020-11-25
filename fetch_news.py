@@ -1,6 +1,17 @@
+'''
+    News functions here
+
+    Oscar Jaimes
+    Nov 25 2020
+'''
 import feedparser
 
 def get_news_by_ticker(ticker):
-    NewsFeed = feedparser.parse("https://news.google.com/rss/search?q={}&hl=en-CA&gl=CA&ceid=CA:en".format(ticker))
+    '''
+        News by ticker from google rss feed
+    '''
+    url = "http://news.google.com/news?q={}+stock&output=rss".format(ticker)
+    print(url)
+    NewsFeed = feedparser.parse(url)
     return { 'articles' : NewsFeed['entries']}
 

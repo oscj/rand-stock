@@ -53,6 +53,10 @@ let populateResultsSection = (tickerSymbol, market) => {
 
     // Populate Stats
     populateStatisticsSection(tickerSymbol)
+
+
+    // Populate News
+    fetchStockNews(tickerSymbol);
 }
 
 let populateStatisticsSection = (tickerSymbol) => {
@@ -105,6 +109,47 @@ let populateSectorDropDown = () => {
                 option.value = sector;
                 sectorSelect.appendChild(option);
             });
+        },
+        type: 'GET'
+    });
+}
+
+
+let fetchStockNews = (ticker) => {
+    let newsTitle = document.getElementById('newsTitle');
+    newsTitle.innerHTML = `News related to ${ticker}`
+    $.ajax({
+        url: `../../stock-news?ticker=${ticker}`,
+        error: () => {
+            console.warn(`Error generating news for ${ticker}`);
+        },
+        success: (data) => {
+
+            console.log(data);
+            let newsDiv = document.getElementById('news-section');
+
+            let all_article_html = "";
+
+            data['articles'].forEach(article => {
+
+                let article_card = ` 
+                <div class="card">
+                <div class="card-header">
+                </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${article['title']}</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to
+                            additional content.</p>
+                        <a href="#" class="btn btn-primary">view</a>
+                    </div>
+                </div>`;
+
+                all_article_html += article_card;
+            });
+
+            newsDiv.innerHTML = all_article_html;
+
+            
         },
         type: 'GET'
     });

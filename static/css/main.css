@@ -1,6 +1,6 @@
 body {
     background-color: #ffffff;
-        overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 .browser-default {
@@ -39,6 +39,15 @@ body {
     font-size: 18px;
 }
 
+.news-section {
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    height: 500px;
+    background-color: #ffff;
+    overflow: auto;
+}
+
 #header {
     background-image: url('..//img/banner.png');
     min-height: 100px;
@@ -66,7 +75,6 @@ body {
 * {
     overflow-x: hidden;
 }
-
 
 #footer {
     text-align: center;
