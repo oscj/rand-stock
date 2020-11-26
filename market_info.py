@@ -34,16 +34,22 @@ def get_sector_list():
     return list(set(good_sectors))
 
 
-def get_nyse_csv():
+'''
+TODO 
+- implement getting CSV files dynamically instead of fetching them from fs
+- need to find data source that provides sector and symbol data. 
+- Links below only provide symbol and company name, not sector.
+'''
+def get_nyse_df():
     r = requests.get(
         'https://pkgstore.datahub.io/core/nyse-other-listings/nyse-listed_csv/data/3c88fab8ec158c3cd55145243fe5fcdf/nyse-listed_csv.csv')
     data =io.StringIO(r.text)
     df = pd.read_csv(data, sep=",")
-    print(df)
+    return df
 
-def get_nasdaq_csv():
+def get_nasdaq_dfv():
     r = requests.get(
         'https://pkgstore.datahub.io/core/nasdaq-listings/nasdaq-listed-symbols_csv/data/595a1f263719c09a8a0b4a64f17112c6/nasdaq-listed-symbols_csv.csv')
     data =io.StringIO(r.text)
     df = pd.read_csv(data, sep=",")
-    print(df)
+    return df
