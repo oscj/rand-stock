@@ -7,7 +7,7 @@ Have you ever wanted to start investing but couldn't decide what stock to pour y
 
 No more TSLA calls. No more PLTR calls. Put all your money in a random stock and [perform better than the S&P500](https://www.youtube.com/watch?v=NfSGm9DDQ3o&ab_channel=Node14)
 
-Honestly, I couldn't find a random stock generator that I truly loved. So I decided to make my own. Shows you standard stats for the stock as well as most recent news specific to that stocl.
+Honestly, I couldn't find a random stock generator that I truly loved. So I decided to make my own. Shows you standard stats for the stock as well as most recent news specific to that stock.
 
 ### How it works
 - Python server (Flask)
