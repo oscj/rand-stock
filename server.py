@@ -15,16 +15,13 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 limiter = Limiter(
     app,
     key_func=get_remote_address,
     default_limits=["12 per minute"]
 )
-
-@app.errorhandler(429)
-def ratelimit_handler(e):
-    return flask.make_response(json.jsonify(error="You have exceeded the rate limit"), 429)
 
 @app.route('/')
 @limiter.exempt
@@ -65,6 +62,23 @@ def get_stock_info():
 def get_stock_news():
     stock = request.args.get('ticker')
     return fn.get_news_by_ticker(stock)
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    return flask.make_response(json.jsonify(error="You have exceeded the rate limit"), 429)
+
+@app.after_request
+def add_header(r):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
+    r.headers['Cache-Control'] = 'public, max-age=0'
+    return r
+
 
 if __name__ == '__main__':
     app.run()

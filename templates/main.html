@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="RandStock is a random stock selector and screener. View statisticcs, graphs, and top news.">
+    <meta name="description" content="Random Stock Selector">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="random, stock, generator, rand, randstock, selector">
     <meta name="author" content="oscjaimes">
@@ -16,12 +16,15 @@
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel="stylesheet"
         type="text/css">
     <link href="{{url_for('static', filename='css/main.css')}}" rel="stylesheet" type="text/css">
+    <link href="https://liberapay.com/assets/forkawesome/1.1.7/css/fork-awesome.min.css.map">
+    </link>
 </head>
 <html>
 
 <body>
 
     <div class="jumbotron" id='header' style='padding-bottom: 10px;'>
+       
     </div>
 
     <div class='row no-gutters' style='padding-bottom: 0px; padding-top: 0px;'>
@@ -56,25 +59,25 @@
                 <div class='container-fluid' style='padding-top: 0px'>
                     <div class="row no-gutters" id='main-ticker-result' style='padding-top: 0px; padding-bottom: 0px''>
                         <div class="col-md-1"></div>
-                        <div class="col-md-3" id=' stats1'style='display: block'>
+                        <div class="col-md-3" id="stats1" style="display: block">
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <h5 class="stat-title">Open</h5>
-                                <h5 class="stat-number" id='open'>
-                                </h5>
-                            </li>
-                            <li class="list-group-item">
-                                <h5 class='stat-title'>High</h5>
-                                <h5 class="stat-number" id='high'></h5>
-                            </li>
-                            <li class="list-group-item">
-                                <h5 class='stat-title'>Low</h5>
-                                <h5 class="stat-number" id='low'></h5>
-                            </li>
-                            <li class="list-group-item">
-                                <h5 class='stat-title'>Mkt. Cap</h5>
-                                <h5 class="stat-number" id='cap'></h5>
-                            </li>
+                                <h5 class="stat-number" id="open">
+                        </h5>
+                        </li>
+                        <li class="list-group-item">
+                            <h5 class=' stat-title'>High</h5>
+                        <h5 class="stat-number" id='high'></h5>
+                        </li>
+                        <li class="list-group-item">
+                            <h5 class='stat-title'>Low</h5>
+                            <h5 class="stat-number" id='low'></h5>
+                        </li>
+                        <li class="list-group-item">
+                            <h5 class='stat-title'>Mkt. Cap</h5>
+                            <h5 class="stat-number" id='cap'></h5>
+                        </li>
                         </ul>
                     </div>
 
@@ -121,14 +124,13 @@
                     </div>
                 </div>
 
-
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
                 <div class="row" style='padding-top: 20px'>
                     <div class="col-md-8">
                         <!-- TradingView Widget BEGIN -->
                         <div class="tradingview-widget-container"
                             style='text-align:center; margin-left: auto; margin-right: auto; padding-top: 8px;'>
                             <div id="tradingview_6b594"></div>
-                            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
                         </div>
                         <!-- TradingView Widget END -->
                     </div>
