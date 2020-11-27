@@ -2,6 +2,8 @@
 
 A random stock selector dedicated to the [r/wallstreetbets](https://reddit.com/r/wallstreetbets) community
 
+[1k+ upvotes on r/stocks](https://www.reddit.com/r/stocks/comments/k18aya/random_stocks/) but only 2 stars on GitHub 
+
 -------
 Have you ever wanted to start investing but couldn't decide what stock to pour your life savings in to? Then wsb-rand-stock is the product for you. Using advanced propietary algos, wsb-rand-stock reccomends* a great stock for you to invest in. You will never have to conduct market analysis again with this product. 
 
