@@ -17,6 +17,7 @@ $(document).ready(() => {
             $.ajax({
                 url: `../../${market}?sector=${sector}`,
                 error: async () => {
+                    swal('Looks like there was an error behind the scenes. Not to worry, TLSA or PLTR will save the day');
                     // If request fails, its a 50/50 between TSLA and PLTR. 
                     // Update as meme stocks meta changes.
                     console.warn("Error generating ticker symbol. TSLA or PLTR will save the day.");
@@ -32,6 +33,11 @@ $(document).ready(() => {
                     await populateResultsSection(data, document.getElementById('market-select').options[document.getElementById('market-select').selectedIndex].text).then(() => {
                         setTimeout(function () { document.getElementById("generate-random").disabled = false; }, 5000);
                     });
+                },
+                statusCode: {
+                    429: function (xhr) {
+                        swal(xhr.responseText);
+                    },
                 },
                 type: 'GET'
             });
@@ -136,7 +142,6 @@ let fetchStockNews = async (ticker) => {
         },
         success: (data) => {
 
-            console.log(data);
             let newsDiv = document.getElementById('news-section');
 
             let all_article_html = "";

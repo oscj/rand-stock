@@ -8,11 +8,26 @@ import generator
 import market_info as mi
 import stock_data as sd
 import fetch_news as fn
+
 import flask
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, json
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+
 app = Flask(__name__)
 
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["12 per minute"]
+)
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    return flask.make_response(json.jsonify(error="You have exceeded the rate limit"), 429)
+
 @app.route('/')
+@limiter.exempt
 def main():
     response = flask.Response()
     response.headers["Clear-Site-Data"] = "cache"
