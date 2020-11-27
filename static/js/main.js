@@ -5,6 +5,20 @@
  * Novermer 24  2020
  */
 
+let loading1 = document.getElementById('loading1');
+let loading2 = document.getElementById('loading2');
+let stats1 = document.getElementById('stats1');
+let stats2 = document.getElementById('stats2');
+
+let openStat = document.getElementById('open')
+let high = document.getElementById('high')
+let low = document.getElementById('low');
+let cap = document.getElementById('cap');
+let vol = document.getElementById('vol');
+let avgVol = document.getElementById('avg-vol');
+let high52 = document.getElementById('52w-high');
+let low52 = document.getElementById('52w-low');
+
 $(document).ready(() => {
     // Get random stock button
     $("#generate-random").on("click", () => {
@@ -76,27 +90,43 @@ let populateResultsSection = async (tickerSymbol, market) => {
 }
 
 let populateStatisticsSection = async (tickerSymbol) => {
+    loading1.style.display = 'block';
+    loading2.style.display = 'block';
+    stats1.style.display = 'none';
+    stats2.style.display = 'none';
+
     $.ajax({
         url: `../../stock-info?ticker=${tickerSymbol}`,
         error: () => {
-            document.getElementById('open').innerHTML = '-';
-            document.getElementById('high').innerHTML = '-';
-            document.getElementById('low').innerHTML = '-';
-            document.getElementById('cap').innerHTML = '-';
-            document.getElementById('vol').innerHTML = '-';
-            document.getElementById('avg-vol').innerHTML = '-';
-            document.getElementById('52w-high').innerHTML = '-';
-            document.getElementById('52w-low').innerHTML = '-';
+            loading1.style.display = 'none';
+            loading2.style.display = 'none';
+            stats1.style.display = 'block';
+            stats2.style.display = 'block';
+
+            opopenStat.innerHTML = '-';
+            high.innerHTML = '-';
+            low.innerHTML = '-';
+            cap.innerHTML = '-';
+            vol.innerHTML = '-';
+            avgVol.innerHTML = '-';
+            high52.innerHTML = '-';
+            low52.innerHTML = '-';
         },
         success: (data) => {
-            document.getElementById('open').innerHTML = (data['open']);
-            document.getElementById('high').innerHTML = (data['high']);
-            document.getElementById('low').innerHTML = (data['low']);
-            document.getElementById('cap').innerHTML = numberWithCommas(data['marketCap']) || data['marketCap'];
-            document.getElementById('vol').innerHTML = numberWithCommas(data['vol']) || data['vol'];
-            document.getElementById('avg-vol').innerHTML = numberWithCommas(data['avgVol']) || data['avgVol'];
-            document.getElementById('52w-high').innerHTML = (data['52wHigh']) || data['52wHigh'];
-            document.getElementById('52w-low').innerHTML = (data['52wLow']) || data['52wLow'];
+            loading1.style.display = 'none';
+            loading2.style.display = 'none';
+            stats1.style.display = 'block';
+            stats2.style.display = 'block';
+
+            console.log(openStat)
+            openStat.innerHTML = (data['open']);
+            high.innerHTML = (data['high']);
+            low.innerHTML = (data['low']);
+            cap.innerHTML = numberWithCommas(data['marketCap']) || data['marketCap'];
+            vol.innerHTML = numberWithCommas(data['vol']) || data['vol'];
+            avgVol.innerHTML = numberWithCommas(data['avgVol']) || data['avgVol'];
+            high52.innerHTML = (data['52wHigh']) || data['52wHigh'];
+            low52.innerHTML = (data['52wLow']) || data['52wLow'];
         },
         type: 'GET'
     });
