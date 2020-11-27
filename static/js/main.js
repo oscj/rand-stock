@@ -10,17 +10,28 @@ $(document).ready(() => {
     $("#generate-random").on("click", () => {
         let market = document.getElementById('market-select').value;
         let sector = document.getElementById('sector-select').value;
+        document.getElementById("generate-random").disabled = true;
         if (market == "") {
             swal('Invalid market choice.\nPlease choose one of the markets listed')
         } else {
             $.ajax({
                 url: `../../${market}?sector=${sector}`,
-                error: () => {
-                    console.warn("Error generating ticker symbol. TSLA will save the day.");
-                    populateResultsSection('TSLA', 'NASDAQ');
+                error: async () => {
+                    // If request fails, its a 50/50 between TSLA and PLTR. 
+                    // Update as meme stocks meta changes.
+                    console.warn("Error generating ticker symbol. TSLA or PLTR will save the day.");
+                    let randInt = Math.floor(Math.random() * 100)
+                    if (randInt % 2 == 0) {
+                        await populateResultsSection('TSLA', 'NASDAQ');
+                    } else {
+                        await populateResultsSection('PLTR', 'NYSE');
+                    }
+                    setTimeout(function () { document.getElementById('generate-random').disabled = false; }, 5000);
                 },
-                success: (data) => {
-                    populateResultsSection(data, document.getElementById('market-select').options[document.getElementById('market-select').selectedIndex].text);
+                success: async (data) => {
+                    await populateResultsSection(data, document.getElementById('market-select').options[document.getElementById('market-select').selectedIndex].text).then(() => {
+                        setTimeout(function () { document.getElementById("generate-random").disabled = false; }, 5000);
+                    });
                 },
                 type: 'GET'
             });
@@ -28,7 +39,7 @@ $(document).ready(() => {
     })
 });
 
-let populateResultsSection = (tickerSymbol, market) => {
+let populateResultsSection = async (tickerSymbol, market) => {
     // Get Trading View stock graph for corresponding ticker
     new TradingView.widget(
         {
@@ -52,14 +63,13 @@ let populateResultsSection = (tickerSymbol, market) => {
     document.getElementById('ticker-symbol').innerHTML = tickerSymbol;
 
     // Populate Stats
-    populateStatisticsSection(tickerSymbol)
-
+    await populateStatisticsSection(tickerSymbol)
 
     // Populate News
-    fetchStockNews(tickerSymbol);
+    await fetchStockNews(tickerSymbol);
 }
 
-let populateStatisticsSection = (tickerSymbol) => {
+let populateStatisticsSection = async (tickerSymbol) => {
     $.ajax({
         url: `../../stock-info?ticker=${tickerSymbol}`,
         error: () => {
@@ -73,21 +83,24 @@ let populateStatisticsSection = (tickerSymbol) => {
             document.getElementById('52w-low').innerHTML = '-';
         },
         success: (data) => {
-            document.getElementById('open').innerHTML = (data['open']) || '-';
-            document.getElementById('high').innerHTML = (data['high']) || '-';
-            document.getElementById('low').innerHTML = (data['low']) || '-';
-            document.getElementById('cap').innerHTML = numberWithCommas(data['marketCap']) || '-';
-            document.getElementById('vol').innerHTML = numberWithCommas(data['vol']) || '-';
-            document.getElementById('avg-vol').innerHTML = numberWithCommas(data['avgVol']) || '-';
-            document.getElementById('52w-high').innerHTML = (data['52wHigh']) || '-';
-            document.getElementById('52w-low').innerHTML = (data['52wLow']) || '-';
+            document.getElementById('open').innerHTML = (data['open']);
+            document.getElementById('high').innerHTML = (data['high']);
+            document.getElementById('low').innerHTML = (data['low']);
+            document.getElementById('cap').innerHTML = numberWithCommas(data['marketCap']) || data['marketCap'];
+            document.getElementById('vol').innerHTML = numberWithCommas(data['vol']) || data['vol'];
+            document.getElementById('avg-vol').innerHTML = numberWithCommas(data['avgVol']) || data['avgVol'];
+            document.getElementById('52w-high').innerHTML = (data['52wHigh']) || data['52wHigh'];
+            document.getElementById('52w-low').innerHTML = (data['52wLow']) || data['52wLow'];
         },
         type: 'GET'
     });
 }
 
-// Mis function to format numbers. Taken from the bible (https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript)
+// Misc function to format numbers. Taken from the bible (https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript)
 let numberWithCommas = (x) => {
+    if (x == '-') {
+        return null;
+    }
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
@@ -115,7 +128,7 @@ let populateSectorDropDown = () => {
 }
 
 
-let fetchStockNews = (ticker) => {
+let fetchStockNews = async (ticker) => {
     $.ajax({
         url: `../../stock-news?ticker=${ticker}`,
         error: () => {
@@ -129,7 +142,7 @@ let fetchStockNews = (ticker) => {
             let all_article_html = "";
             data['articles'].forEach(article => {
                 let header = "";
-              
+
                 let article_card = ` 
                 <div class="card">
               

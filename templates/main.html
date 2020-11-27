@@ -21,10 +21,13 @@
 
 <body>
 
-    <div class="jumbotron" id='header'>
+    <div class="jumbotron" id='header' style='padding-bottom: 10px;'>
+        <script src="https://liberapay.com/oscjaimes/widgets/button.js"></script>
+        <noscript><a href="https://liberapay.com/oscjaimes/donate"><img alt="Donate using Liberapay"
+                    src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
     </div>
 
-    <div class='row no-gutters'>
+    <div class='row no-gutters' style='padding-bottom: 0px; padding-top: 0px;'>
         <div class='col-md-2'></div>
         <div class='col-md-2'>
             <h5>Exchange</h5>
@@ -35,7 +38,7 @@
             </select>
         </div>
 
-        <div class='col-md-4' style='padding: 5px;'>
+        <div class='col-md-4'>
             <h5>Sector</h5>
             <select class="browser-default custom-select" id='sector-select'>
             </select>
@@ -52,7 +55,7 @@
 
     <div class='row' style='padding-top: 0px'>
         <div class='col'>
-            <div class="jumbotron text-center" id='results' style='padding: 20px'>
+            <div class="jumbotron text-center" id='results' style='padding: 20px;'>
                 <div class='container-fluid' style='padding-top: 0px'>
                     <div class="row no-gutters" id='main-ticker-result' style='padding-top: 0px; padding-bottom: 0px''>
                         <div class="col-md-1"></div>
@@ -60,73 +63,74 @@
                             <ul class="list-group">
                                 <li class="list-group-item">
                                     <h5 class="stat-title">Open</h5>
-                                    <h5 class="stat-number" id='open'></h5>
-                                </li>
-                                <li class="list-group-item">
-                                    <h5 class='stat-title'>High</h5>
-                                    <h5 class="stat-number" id='high'></h5>
-                                </li>
-                                <li class="list-group-item">
-                                    <h5 class='stat-title'>Low</h5>
-                                    <h5 class="stat-number" id='low'></h5>
-                                </li>
-                                <li class="list-group-item">
-                                    <h5 class='stat-title'>Mkt. Cap</h5>
-                                    <h5 class="stat-number" id='cap'></h5>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-2">
-                            <h5>Ticker Symbol: </h5>
-                            <h2 id='ticker-symbol' style='color: #0645AD'></h2>
-                        </div>
-                        <div class="col-md-2">
-                            <h5>Exchange: </h5>
-                            <h2 id='chosen-market'></h2>
-                        </div>
-                        <div class="col-md-3">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <h5 class='stat-title'>Vol</h5>
-                                    <h5 class="stat-number" id='vol'></h5>
-                                </li>
-                                <li class="list-group-item">
-                                    <h5 class='stat-title'>Avg. Vol</h5>
-                                    <h5 class="stat-number" id='avg-vol'></h5>
-                                </li>
-                                <li class="list-group-item">
-                                    <h5 class='stat-title'>52w High</h5>
-                                    <h5 class="stat-number" id='52w-high'></h5>
-                                </li>
-                                <li class="list-group-item">
-                                    <h5 class='stat-title'>52w Low</h5>
-                                    <h5 class="stat-number" id='52w-low'></h5>
-                                </li>
-                            </ul>
-                        </div>
+                                    <h5 class="stat-number" id='open'>
+                        </h5>
+                        </li>
+                        <li class="list-group-item">
+                            <h5 class='stat-title'>High</h5>
+                            <h5 class="stat-number" id='high'></h5>
+                        </li>
+                        <li class="list-group-item">
+                            <h5 class='stat-title'>Low</h5>
+                            <h5 class="stat-number" id='low'></h5>
+                        </li>
+                        <li class="list-group-item">
+                            <h5 class='stat-title'>Mkt. Cap</h5>
+                            <h5 class="stat-number" id='cap'></h5>
+                        </li>
+                        </ul>
                     </div>
-
-                    <div class="row" style='padding-top: 20px'>
-                        <div class="col-md-8">
-                            <!-- TradingView Widget BEGIN -->
-                            <div class="tradingview-widget-container"
-                                style='text-align:center; margin-left: auto; margin-right: auto; padding-top: 8px;'>
-                                <div id="tradingview_6b594"></div>
-                                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                            </div>
-                            <!-- TradingView Widget END -->
-                        </div>
-
-                        <div class="col-md-4">
-                            <h5 id='newsTitle'></h5>
-                            <div class='news-section' id='news-section'>
-                            </div>
-                        </div>
+                    <div class="col-md-2">
+                        <h5>Ticker Symbol: </h5>
+                        <h2 id='ticker-symbol' style='color: #0645AD'></h2>
                     </div>
-
+                    <div class="col-md-2">
+                        <h5>Exchange: </h5>
+                        <h2 id='chosen-market'></h2>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h5 class='stat-title'>Vol</h5>
+                                <h5 class="stat-number" id='vol'></h5>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 class='stat-title'>Avg. Vol</h5>
+                                <h5 class="stat-number" id='avg-vol'></h5>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 class='stat-title'>52w High</h5>
+                                <h5 class="stat-number" id='52w-high'></h5>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 class='stat-title'>52w Low</h5>
+                                <h5 class="stat-number" id='52w-low'></h5>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+
+                <div class="row" style='padding-top: 20px'>
+                    <div class="col-md-8">
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container"
+                            style='text-align:center; margin-left: auto; margin-right: auto; padding-top: 8px;'>
+                            <div id="tradingview_6b594"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        </div>
+                        <!-- TradingView Widget END -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <h5 id='newsTitle'></h5>
+                        <div class='news-section' id='news-section'>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </div>
     </div>
 
     <div class='row' id='footer'>
