@@ -5,6 +5,7 @@
  * Novermer 24  2020
  */
 
+let randomButton = document.getElementById('generate-random');
 let newsLoading = document.getElementById('news-loading');
 let loading1 = document.getElementById('loading1');
 let loading2 = document.getElementById('loading2');
@@ -23,7 +24,7 @@ let low52 = document.getElementById('52w-low');
 
 $(document).ready(() => {
     // Get random stock button
-    $("#generate-random").on("click", () => {
+    $('#generate-random').on("click", () => {
         let market = document.getElementById('market-select').value;
         let sector = document.getElementById('sector-select').value;
         document.getElementById("generate-random").disabled = true;
@@ -43,11 +44,11 @@ $(document).ready(() => {
                     } else {
                         await populateResultsSection('PLTR', 'NYSE');
                     }
-                    setTimeout(function () { document.getElementById('generate-random').disabled = false; }, 5000);
+                    setTimeout(function () { randomButton.disabled = false; }, 5000);
                 },
                 success: async (data) => {
                     await populateResultsSection(data, document.getElementById('market-select').options[document.getElementById('market-select').selectedIndex].text).then(() => {
-                        setTimeout(function () { document.getElementById("generate-random").disabled = false; }, 5000);
+                        setTimeout(function () { randomButton.disabled = false; }, 5000);
                     });
                 },
                 statusCode: {
@@ -61,7 +62,7 @@ $(document).ready(() => {
     })
 });
 
-let populateResultsSection = async (tickerSymbol, market) => {
+const populateResultsSection = async (tickerSymbol, market) => {
     // Get Trading View stock graph for corresponding ticker
     new TradingView.widget(
         {
@@ -91,7 +92,7 @@ let populateResultsSection = async (tickerSymbol, market) => {
     await fetchStockNews(tickerSymbol);
 }
 
-let populateStatisticsSection = async (tickerSymbol) => {
+const populateStatisticsSection = async (tickerSymbol) => {
     loading1.style.display = 'block';
     loading2.style.display = 'block';
     stats1.style.display = 'none';
@@ -134,7 +135,7 @@ let populateStatisticsSection = async (tickerSymbol) => {
 }
 
 // Misc function to format numbers. Taken from the bible (https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript)
-let numberWithCommas = (x) => {
+const numberWithCommas = (x) => {
     if (x == '-') {
         return null;
     }
@@ -142,7 +143,7 @@ let numberWithCommas = (x) => {
 }
 
 // Gets all sectors and populates dropdown menu.
-let populateSectorDropDown = () => {
+const populateSectorDropDown = () => {
     $.ajax({
         url: `../../sector-list`,
         error: () => {
@@ -165,7 +166,7 @@ let populateSectorDropDown = () => {
 }
 
 
-let fetchStockNews = async (ticker) => {
+const fetchStockNews = async (ticker) => {
     newsList.style.display = 'none';
     newsLoading.style.display = 'block';
     $.ajax({
@@ -198,6 +199,7 @@ let fetchStockNews = async (ticker) => {
     });
 }
 
+// Initiate random call automatically when page loads.
 $(window).on('load', () => {
     populateSectorDropDown();
     $.ajax({
