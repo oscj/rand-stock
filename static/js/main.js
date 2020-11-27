@@ -5,11 +5,13 @@
  * Novermer 24  2020
  */
 
+let newsLoading = document.getElementById('news-loading');
 let loading1 = document.getElementById('loading1');
 let loading2 = document.getElementById('loading2');
 let stats1 = document.getElementById('stats1');
 let stats2 = document.getElementById('stats2');
 
+let newsList = document.getElementById('news-list');
 let openStat = document.getElementById('open')
 let high = document.getElementById('high')
 let low = document.getElementById('low');
@@ -118,7 +120,6 @@ let populateStatisticsSection = async (tickerSymbol) => {
             stats1.style.display = 'block';
             stats2.style.display = 'block';
 
-            console.log(openStat)
             openStat.innerHTML = (data['open']);
             high.innerHTML = (data['high']);
             low.innerHTML = (data['low']);
@@ -165,15 +166,14 @@ let populateSectorDropDown = () => {
 
 
 let fetchStockNews = async (ticker) => {
+    newsList.style.display = 'none';
+    newsLoading.style.display = 'block';
     $.ajax({
         url: `../../stock-news?ticker=${ticker}`,
         error: () => {
             console.warn(`Error generating news for ${ticker}`);
         },
         success: (data) => {
-
-            let newsDiv = document.getElementById('news-section');
-
             let all_article_html = "";
             data['articles'].forEach(article => {
                 let header = "";
@@ -190,9 +190,9 @@ let fetchStockNews = async (ticker) => {
                 all_article_html += article_card;
             });
 
-            newsDiv.innerHTML = all_article_html;
-
-
+            newsLoading.style.display = 'none';
+            newsList.style.display = 'block';
+            newsList.innerHTML = all_article_html;
         },
         type: 'GET'
     });
@@ -202,12 +202,17 @@ $(window).on('load', () => {
     populateSectorDropDown();
     $.ajax({
         url: `../../rand-nasdaq`,
-        error: () => {
+        error: (data) => {
+            console.warn(data);
             swal("Error generating ticker symbol");
         },
         success: (data) => {
-            console.log(data);
             populateResultsSection(data, 'NASDAQ');
+        },
+        statusCode: {
+            429: function (xhr) {
+                swal(xhr.responseText);
+            },
         },
         type: 'GET'
     });
