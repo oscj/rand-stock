@@ -5,9 +5,10 @@ import io
 nasdaq_df = pd.read_csv('./static/csv/nasdaq.csv')
 amex_df = pd.read_csv('./static/csv/amex.csv')
 nyse_df = pd.read_csv('./static/csv/nyse.csv')
+asx_df = pd.read_csv('./static/csv/asx.csv')
 
 
-def get_tickers(NYSE=True, NASDAQ=True, AMEX=True, sector=""):
+def get_tickers(NYSE=True, NASDAQ=True, AMEX=True,ASX=True, sector=""):
     tickers_list = []
     if NYSE:
         tickers_list.extend(parse_tickers(nyse_df.query(
@@ -17,6 +18,9 @@ def get_tickers(NYSE=True, NASDAQ=True, AMEX=True, sector=""):
             'Sector == "{}"'.format(sector))['Symbol'].tolist()))
     if AMEX:
         tickers_list.extend(parse_tickers(amex_df.query(
+            'Sector == "{}"'.format(sector))['Symbol'].tolist()))
+    if ASX:
+        tickers_list.extend(parse_tickers(asx_df.query(
             'Sector == "{}"'.format(sector))['Symbol'].tolist()))
     return tickers_list
 

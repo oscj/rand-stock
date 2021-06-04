@@ -1,8 +1,8 @@
 '''
-    Server side. Controls routes. Provides access to stock & related data
+Server side. Controls routes. Provides access to stock & related data
 
-    Oscar Jaimes
-    Nov 24 2020
+Oscar Jaimes
+June 3 2021
 '''
 import generator
 import market_info as mi
@@ -38,12 +38,18 @@ def get_rand_nyse():
 @app.route('/rand-nasdaq')
 def get_rand_nasdaq():
     sector = request.args.get("sector", default='Technology')
+    print('This is sector: {}'.format(sector))
     return generator.get_rand_ticker_nasdaq(sector)
 
 @app.route('/rand-amex')
 def get_rand_amex():
     sector = request.args.get("sector", default='Technology')
     return generator.get_rand_ticker_amex(sector)
+
+@app.route('/rand-asx')
+def get_rand_asx():
+    sector = request.args.get("sector", default='Technology')
+    return generator.get_rand_ticker_asx(sector)
 
 @app.route('/sector-list')
 def get_sector_list():
