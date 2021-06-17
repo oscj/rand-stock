@@ -4,7 +4,8 @@ import {
     BrowserRouter as Router,
     Route,
     Switch,
-    Link
+    Link,
+    Redirect
 } from 'react-router-dom';
 
 import SelectorPage from './selector/SelectorPage';
@@ -26,6 +27,7 @@ export default function NavBar() {
                 <Switch>
                     <Route path="/selector" component={SelectorPage} />
                     <Route path="/screener" component={ScreenerPage} />
+                    <Redirect to="/selector" />
                 </Switch>
             </Router>
         </div>

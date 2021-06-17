@@ -5,12 +5,13 @@ import {
     Card
 } from 'react-bootstrap';
 import SelectorForm from './SelectorForm';
+import NewsSection from './NewsSection';
 import TradingViewWidget from 'react-tradingview-widget';
 
 const SelectorPage = () => {
     return (
         <div>
-            <Row style={{ paddingTop: "0.5%" }}>
+            <Row style={{ paddingTop: "1.5%" }}>
                 <Col md={1}></Col>
                 <Col md={10}>
                     <Card>
@@ -24,13 +25,20 @@ const SelectorPage = () => {
                 </Col>
                 <Col md={1}></Col>
             </Row>
-            <Row style={{ textAlign: 'left', paddingTop: "1%", height:"200px" }}>
+            <Row style={{ textAlign: 'left', paddingTop: "2.5%", height: "200px" }}>
                 <Col md={1}></Col>
                 <Col md={2}>
                     <SelectorForm />
                 </Col>
                 <Col md={8}>
-                    <TradingViewWidget width="100%" height="370px" symbol="NASDAQ:AAPL" />
+                    <div>
+                        <TradingViewWidget width="100%" height="370px" symbol="NASDAQ:AAPL" />
+                    </div>
+
+                    <div style={{paddingTop: "5%"}}>
+                        <h5>Related news to APPL</h5>
+                        <NewsSection />
+                    </div>
                 </Col>
                 <Col md={1}></Col>
             </Row>

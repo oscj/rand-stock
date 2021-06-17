@@ -13,9 +13,13 @@ import flask
 from flask import Flask, render_template, request, json
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 limiter = Limiter(
     app,
