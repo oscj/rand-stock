@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
-// API
-const { API_BASE_URL } = process.env;
+const { REACT_APP_API_BASE_URL } = process.env;
 
 export default function NewsSection(props) {
 
@@ -16,7 +14,7 @@ export default function NewsSection(props) {
     }, []);
 
     const fetchAndCreateNewsCards = () => {
-        fetch(`http://localhost:5000/stock-news?ticker=%27AAPL%27`)
+        fetch(`${REACT_APP_API_BASE_URL}/stock-news?ticker=%27AAPL%27`)
             .then(res => res.json())
             .then(news => {
                 setNewsCards(
@@ -30,7 +28,7 @@ export default function NewsSection(props) {
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 4,
+            items: 5,
             slidesToSlide: 4 // optional, default to 1.
         },
         tablet: {
@@ -73,10 +71,10 @@ export default function NewsSection(props) {
 
 const NewsCard = (props) => {
     return (
-        <Card style={{ width: '18rem', minHeight: '220px', maxHeight: '220px' }}>
+        <Card style={{ width: "95%", minHeight: '220px', maxHeight: '220px' }}>
             <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <Card.Title style={{maxHeight: "100px", overflow: 'scroll'}}>{props.title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted" style={{maxHeight: "10px"}}>{props.subtitle}</Card.Subtitle>
+                <Card.Title style={{ maxHeight: "100px", overflow: 'scroll' }}>{props.title}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted" style={{ maxHeight: "10px" }}>{props.subtitle}</Card.Subtitle>
                 <Card.Text>
                     {props.text}
                 </Card.Text>
