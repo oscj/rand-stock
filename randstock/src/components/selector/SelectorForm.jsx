@@ -44,7 +44,7 @@ const SelectorForm = (props) => {
         fetch(`${REACT_APP_API_BASE_URL}/rand-${market}?sector=${sector}`)
             .then(async result => {
                 if (result.status === 429) {
-                    alert("Rate Limit Exceeded.");
+                    alert("Rate Limit Exceeded. You have an alloted total of 12 queries per minute.");
                 } else if (result.status == 200) {
                     let res = await (result.text());
                     props.setTicker(res);

@@ -73,6 +73,7 @@ def get_stock_info():
     return sd.get_info(stock)
 
 @app.route('/stock-news')
+@limiter.exempt
 def get_stock_news():
     stock = request.args.get('ticker')
     return fn.get_news_by_ticker(stock)

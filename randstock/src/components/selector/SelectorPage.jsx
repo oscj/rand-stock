@@ -48,6 +48,7 @@ const SelectorPage = () => {
                 <Col md={10}>
                     <h5>Related news to {ticker}</h5>
                     <NewsSection ticker={ticker} />
+                    <p style={{textAlign: 'center', paddingTop: "3%", color:"grey", fontSize:"13px"}}>*** Not financial advice. These stock picks are completely random with no guarantee of going to the moon 🚀 *** </p>
                 </Col>
                 <Col md={1}></Col>
             </Row>
