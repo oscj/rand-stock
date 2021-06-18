@@ -39,7 +39,7 @@ const SelectorPage = () => {
                     <SelectorForm setTicker={setTicker} />
                 </Col>
                 <Col md={8}>
-                    <TradingViewWidget width="100%" height="370px" symbol={ticker} />
+                    <TradingViewWidget width="100%" height={370} symbol={ticker} />
                 </Col>
                 <Col md={1}></Col>
             </Row>

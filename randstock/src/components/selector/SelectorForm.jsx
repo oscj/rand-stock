@@ -41,7 +41,7 @@ const SelectorForm = (props) => {
 
     const onSelectRandomStock = (e) => {
         let market = exchange.toLowerCase()
-        fetch(`${REACT_APP_API_BASE_URL}/rand-${market}`)
+        fetch(`${REACT_APP_API_BASE_URL}/rand-${market}?sector=${sector}`)
             .then(async result => {
                 if (result.status === 429) {
                     alert("Rate Limit Exceeded.");
@@ -58,10 +58,10 @@ const SelectorForm = (props) => {
     return (
         <Form onSubmit={onSelectRandomStock}>
             <Form.Label>Exchange</Form.Label>
-            <Select options={exchangeOptions} />
+            <Select options={exchangeOptions} onChange={(e) => { setExchange(e.value) }} />
             <br />
             <Form.Label>Sector</Form.Label>
-            <Select options={sectorOptions} />
+            <Select options={sectorOptions} onChange={(e) => { setSector(e.value) }} />
             <br />
             <Button variant="dark" type="submit">Select Random Stock</Button>
         </Form>
