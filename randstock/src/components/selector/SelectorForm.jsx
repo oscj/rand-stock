@@ -4,19 +4,11 @@ import Select from 'react-select';
 const { REACT_APP_API_BASE_URL } = process.env;
 
 
-const SelectorForm = () => {
-
+const SelectorForm = (props) => {
     const [exchangeOptions, setExchangeOptions] = useState([]);
     const [sectorOptions, setSectorOptions] = useState([]);
-    const marketCapOptions = [
-        { value: "1", label: "< 1M" },
-        { value: "2", label: "1M - 10M" },
-        { value: "3", label: "10M - 50M" },
-        { value: "4", label: "50M - 100M" },
-        { value: "5", label: "100M - 500M" },
-        { value: "6", label: "500M - 1B" },
-        { value: "7", label: "> 1B" }
-    ];
+    const [exchange, setExchange] = useState("");
+    const [sector, setSector] = useState("");
 
     useEffect(() => {
         fetchAndSetExchageOptions();
@@ -31,6 +23,7 @@ const SelectorForm = () => {
                 setExchangeOptions(
                     exchanges.map(exchange => { return { value: exchange, label: exchange } })
                 );
+                setExchange(exchanges[0]);
             });
     };
 
@@ -42,21 +35,35 @@ const SelectorForm = () => {
                 setSectorOptions(
                     sectors.map(sector => { return { value: sector, label: sector } })
                 );
+                setSector(sectors[0]);
             });
     };
 
+    const onSelectRandomStock = (e) => {
+        let market = exchange.toLowerCase()
+        fetch(`${REACT_APP_API_BASE_URL}/rand-${market}`)
+            .then(async result => {
+                if (result.status === 429) {
+                    alert("Rate Limit Exceeded.");
+                } else if (result.status == 200) {
+                    let res = await (result.text());
+                    props.setTicker(res);
+                } else {
+                    alert("Error Generating Stock.");
+                }
+            })
+        e.preventDefault();
+    }
+
     return (
-        <Form>
+        <Form onSubmit={onSelectRandomStock}>
             <Form.Label>Exchange</Form.Label>
             <Select options={exchangeOptions} />
             <br />
             <Form.Label>Sector</Form.Label>
             <Select options={sectorOptions} />
             <br />
-            <Form.Label>Market Cap</Form.Label>
-            <Select options={marketCapOptions} />
-            < br />
-            <Button variant="dark">Select Random Stock</Button>
+            <Button variant="dark" type="submit">Select Random Stock</Button>
         </Form>
     );
 }

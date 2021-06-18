@@ -5,16 +5,14 @@ import 'react-multi-carousel/lib/styles.css';
 const { REACT_APP_API_BASE_URL } = process.env;
 
 export default function NewsSection(props) {
-
     const [newsCards, setNewsCards] = useState([]);
-
 
     useEffect(() => {
         fetchAndCreateNewsCards();
-    }, []);
+    }, [props.ticker]);
 
     const fetchAndCreateNewsCards = () => {
-        fetch(`${REACT_APP_API_BASE_URL}/stock-news?ticker=%27AAPL%27`)
+        fetch(`${REACT_APP_API_BASE_URL}/stock-news?ticker=%27${props.ticker}%27`)
             .then(res => res.json())
             .then(news => {
                 setNewsCards(

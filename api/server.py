@@ -34,6 +34,10 @@ def main():
     response.headers["Clear-Site-Data"] = "cache"
     return render_template('main.html')
 
+@app.route("/valid-markets")
+def get_valid_markets():
+    return { 'markets' : ['NYSE', 'NASDAQ', 'AMEX', 'ASX']}
+
 @app.route('/rand-nyse')
 def get_rand_nyse():
     sector = request.args.get("sector", default='Technology')
