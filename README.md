@@ -1,8 +1,8 @@
 ## rand-stock
 
-A random stock selector dedicated to the [r/wallstreetbets](https://reddit.com/r/wallstreetbets) community
+A random stock selector originally dedicated to the [r/wallstreetbets](https://reddit.com/r/wallstreetbets) community
 
-[1k+ upvotes on r/stocks](https://www.reddit.com/r/stocks/comments/k18aya/random_stocks/) but only 3 stars on GitHub 
+[1k+ upvotes on r/stocks](https://www.reddit.com/r/stocks/comments/k18aya/random_stocks/) but only 5 stars on GitHub 
 
 -------
 Have you ever wanted to start investing but couldn't decide what stock to pour your life savings in to? Then rand-stock is the product for you. Using advanced proprietary algos,rand-stock recommends* a great stock for you to invest in. You will never have to conduct market analysis again with this product. 
@@ -20,5 +20,4 @@ Honestly, I couldn't find a random stock generator that I truly loved. So I deci
 
 
 ### Acknowledgment
-Some of the backend python code was greatly inspired by the [get-all-tickers](https://github.com/shilewenuw/get_all_tickers) library made by [Shile Wen](https://github.com/shilewenuw). Because of the [NASDAQ anti scrapping mechanism](https://github.com/shilewenuw/get_all_tickers/issues/4), I wasn't able to use this library on the server side.
-
+Some of the backend python code was greatly inspired by the [get-all-tickers](https://github.com/shilewenuw/get_all_tickers) library made by [Shile Wen](https://github.com/shilewenuw)
