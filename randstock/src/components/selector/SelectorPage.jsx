@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Row,
     Col,
@@ -22,7 +22,10 @@ const HeaderCard = () => {
 };
 
 const SelectorPage = () => {
-    const [ticker, setTicker] = useState("TSLA");
+    const [ticker, setTicker] = useState("GME");
+    useEffect(() => {
+        document.title = 'RandStock - Selector';
+    }, []);
 
     return (
         <div>

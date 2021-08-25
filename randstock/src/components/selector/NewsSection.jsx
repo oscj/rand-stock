@@ -12,7 +12,7 @@ export default function NewsSection(props) {
     }, [props.ticker]);
 
     const fetchAndCreateNewsCards = () => {
-        fetch(`${REACT_APP_API_BASE_URL}/stock-news?ticker=%27${props.ticker}%27`)
+        fetch(`${REACT_APP_API_BASE_URL}stock-news?ticker=%27${props.ticker}%27`)
             .then(res => res.json())
             .then(news => {
                 setNewsCards(
@@ -71,7 +71,7 @@ const NewsCard = (props) => {
     return (
         <Card style={{ width: "95%", minHeight: '220px', maxHeight: '220px' }}>
             <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <Card.Title style={{ maxHeight: "100px", overflow: 'scroll' }}>{props.title}</Card.Title>
+                <Card.Title style={{ maxHeight: "100px", overflow: "hidden" }}>{props.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted" style={{ maxHeight: "10px" }}>{props.subtitle}</Card.Subtitle>
                 <Card.Text>
                     {props.text}

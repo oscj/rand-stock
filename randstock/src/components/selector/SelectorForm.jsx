@@ -16,7 +16,7 @@ const SelectorForm = (props) => {
     }, []);
 
     const fetchAndSetExchageOptions = () => {
-        fetch(`${REACT_APP_API_BASE_URL}/valid-markets`)
+        fetch(`${REACT_APP_API_BASE_URL}valid-markets`)
             .then(res => res.json())
             .then(result => {
                 let exchanges = result.markets;
@@ -28,7 +28,7 @@ const SelectorForm = (props) => {
     };
 
     const fetchAndSetSectorOptions = () => {
-        fetch(`${REACT_APP_API_BASE_URL}/sector-list`)
+        fetch(`${REACT_APP_API_BASE_URL}sector-list`)
             .then(res => res.json())
             .then(result => {
                 let sectors = result.sectors;
@@ -41,7 +41,7 @@ const SelectorForm = (props) => {
 
     const onSelectRandomStock = (e) => {
         let market = exchange.toLowerCase()
-        fetch(`${REACT_APP_API_BASE_URL}/rand-${market}?sector=${sector}`)
+        fetch(`${REACT_APP_API_BASE_URL}rand-${market}?sector=${sector}`)
             .then(async result => {
                 if (result.status === 429) {
                     alert("Rate Limit Exceeded. You have an alloted total of 12 queries per minute.");
