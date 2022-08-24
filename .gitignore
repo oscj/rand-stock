@@ -3,6 +3,8 @@ __pycache__/
 
 instance/
 
+node_modules/
+
 .pytest_cache/
 .coverage
 htmlcov/
