@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/oscjaimes/rand-stock#readme",
   "dependencies": {
+    "danfojs-node": "^1.1.1",
     "express": "^4.18.1",
     "nodemon": "^2.0.19"
   }

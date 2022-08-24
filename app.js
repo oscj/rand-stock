@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 
+const { SUCCESS } = require('./constants/responseCodes');
+
 const server = express();
 server.use(express.static(path.join(__dirname, 'build')));
 
@@ -13,7 +15,7 @@ server.get('*', (req, res) => {
 })
 
 server.get('/valid-markets', (req, res, next) => {
-
+    res.status(SUCCESS).json({'markets': ['NYSE', 'NASDAQ', 'AMEX', 'ASX']});
 });
 
 
