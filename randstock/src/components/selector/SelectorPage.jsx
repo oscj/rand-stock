@@ -25,15 +25,16 @@ const SelectorPage = () => {
     const [ticker, setTicker] = useState("GME");
     useEffect(() => {
         document.title = 'RandStock - Selector';
-
-
-        const script = document.createElement('script');
-
-        script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5281285666992612";
+        const head = document.querySelector("head");
+        const script = document.createElement("script");
+    
+        script.setAttribute("src", "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5281285666992612");
         script.async = true;
-      
-        document.body.appendChild(script);
-      
+        head.appendChild(script);
+    
+        return () => {
+          head.removeChild(script);
+        };
     }, []);
 
     return (
